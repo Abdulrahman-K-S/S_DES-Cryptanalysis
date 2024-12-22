@@ -1,7 +1,7 @@
 """permutationMapping
 
 This file contains the mapping to all the permuations that
-are present in the S-DES algorithm
+are present in the S-DES algorithm 
 """
 
 
