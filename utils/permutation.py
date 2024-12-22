@@ -32,6 +32,10 @@ def performPermutation(data, type):
         mapping = pMapping.permutation_4_inverse_map
     elif type == "expansion":
         mapping = pMapping.expansion_permutation_map
+    elif type == "p10":
+        mapping = pMapping.permutation_10_map
+    elif type == "p8":
+        mapping = pMapping.permutation_8_map
 
     try:
         return ''.join([data[i - 1] for i in mapping])
