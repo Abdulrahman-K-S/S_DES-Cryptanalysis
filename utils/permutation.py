@@ -4,7 +4,7 @@ This file contains the functions that will perform
 the permutations on the bits of the plaintext & ciphertext
 """
 
-import permutationMapping as pMapping
+from utils import permutationMapping
 
 
 def performPermutation(data, type):
@@ -23,19 +23,19 @@ def performPermutation(data, type):
     mapping = None
 
     if type == "initial":
-        mapping = pMapping.initial_permutation_map
+        mapping = permutationMapping.initial_permutation_map
     elif type == "inverse":
-        mapping = pMapping.inverse_initial_permutation_map
+        mapping = permutationMapping.inverse_initial_permutation_map
     elif type == "p4":
-        mapping = pMapping.permutation_4_map
+        mapping = permutationMapping.permutation_4_map
     elif type == "p4-inverse":
-        mapping = pMapping.permutation_4_inverse_map
+        mapping = permutationMapping.permutation_4_inverse_map
     elif type == "expansion":
-        mapping = pMapping.expansion_permutation_map
+        mapping = permutationMapping.expansion_permutation_map
     elif type == "p10":
-        mapping = pMapping.permutation_10_map
+        mapping = permutationMapping.permutation_10_map
     elif type == "p8":
-        mapping = pMapping.permutation_8_map
+        mapping = permutationMapping.permutation_8_map
 
     try:
         return ''.join([data[i - 1] for i in mapping])

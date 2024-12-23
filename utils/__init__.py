@@ -1,2 +1,3 @@
 from .permutation import performPermutation
-from .helpers import splitIntoHalves
+from .permutationMapping import *
+from .helpers import splitIntoHalves, sBoxes, XOR, extract_output, possible_input
