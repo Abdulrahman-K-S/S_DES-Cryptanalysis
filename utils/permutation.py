@@ -36,6 +36,10 @@ def performPermutation(data, type):
         mapping = permutationMapping.permutation_10_map
     elif type == "p8":
         mapping = permutationMapping.permutation_8_map
+    elif type == "k1":
+        mapping = permutationMapping.k1_map
+    elif type == "k2":
+        mapping = permutationMapping.k2_map
 
     try:
         return ''.join([str(data[i - 1]) for i in mapping])
