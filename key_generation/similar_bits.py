@@ -1,12 +1,13 @@
-from utils import performPermutation, left_shift
+from utils import performPermutation, left_shift, splitIntoHalves
 
-MASTER_KEY=[1,2,3,4,5,6,7,8,9,10]
+MASTER_KEY=[0,1,2,3,4,5,6,7,8,9]
+
 
 def generate_keys(input_key):
-    permuted_key = performPermutation(input_key,'p10')
+    permuted_key = performPermutation(input_key, "p10")
 
     # Split the key into two halves
-    left, right = permuted_key[:5], permuted_key[5:]
+    left, right = splitIntoHalves(permuted_key)
 
     # Left Shift by 1 (LS-1)
     left = left_shift(left, 1)
@@ -20,18 +21,30 @@ def generate_keys(input_key):
     right = left_shift(right, 2)
 
     # Permutation P8 for K2
-    K2 =performPermutation(left + right, 'p8')
+    K2 = performPermutation(left + right, 'p8')
 
-    return str(K1),str(K2)
-
-def similar_bits(k1,k2):
-    s_bits=[]
-    for i in range(8):
-        if k1[i]==k2[i]:
-            s_bits.append(i)
-    return s_bits
+    return K1, K2
 
 
-h1,h2=generate_keys(MASTER_KEY)
-similar_bit=similar_bits(h1,h2)
-print(similar_bit)
+def findPossiblePairs(possibleK1s, possibleK2s):
+    """findPossiblePairs
+
+    This function takes all the possible K1s & K2s and checks
+    for the similairty in their bits to check for the pairs
+
+    Arguments:
+        possibleK1s (List): Contains all the possible K1s.
+        possibleK2s (List): Contains all the possible K2s.
+
+    Return:
+        (List): All the possilbe pairs.
+    """
+    possible_pairs = []
+    for k1_num, k1 in enumerate(possibleK1s):
+        permutated_k1 = performPermutation(k1, "k1")
+        for k2_num, k2 in enumerate(possibleK2s):
+            permutated_k2 = performPermutation(k2, "k2")
+            if permutated_k1 == permutated_k2:
+                possible_pairs.append([f"K1 #{k1_num+1}: {k1}", f"K2 #{k2_num+1}: {k2}"])
+                break
+    return possible_pairs

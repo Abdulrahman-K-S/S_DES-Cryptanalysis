@@ -1,1 +1,1 @@
-from .similar_bits import generate_keys, similar_bits
+from .similar_bits import generate_keys, findPossiblePairs
