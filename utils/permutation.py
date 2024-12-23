@@ -38,6 +38,6 @@ def performPermutation(data, type):
         mapping = permutationMapping.permutation_8_map
 
     try:
-        return ''.join([data[i - 1] for i in mapping])
+        return ''.join([str(data[i - 1]) for i in mapping])
     except:
         print("Wrong permutation type!")
