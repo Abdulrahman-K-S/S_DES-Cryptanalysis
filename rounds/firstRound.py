@@ -3,7 +3,7 @@
 This file contains the first round functionality giving the K1
 """
 
-from utils import performPermutation, splitIntoHalves , Sboxes , possible_input , XOR ,  extract_output
+from utils import performPermutation, splitIntoHalves , sBoxes , possible_input , XOR ,  extract_output
 
 
 def firstRoundFromTop(plaintext):
@@ -38,12 +38,12 @@ def firstRoundFromBottom(R1,L0):
         L0 (str): The left half of the plaintext after the initial permutation.
 
     Returns:
-        list: A list of possible inputs to the S-boxes.
+        (list): A list of possible inputs to the S-boxes.
     """
     x=XOR(R1,L0,4)
     permutated_x=performPermutation(x, "p4-inverse")
     o1,o2=extract_output(permutated_x)
-    i1,i2=Sboxes(o1,o2)
+    i1,i2=sBoxes(o1,o2)
     final_inputs=possible_input(i1,i2)
     return final_inputs
     
@@ -55,6 +55,13 @@ def calculateAllPossibleK1s(final_inputs,expanded_R0):
     This function takes the expanded right side from the plaintext
     and the possible 8-bits from the sBoxes and calculates all
     the possible first subkey K1
+
+    Arguments:
+        final_inputs (list): The possible 8-bit inputs derived from the S-boxes.
+        expanded_R1 (str): The expanded right half of the plaintext.
+
+    Returns:
+        (list): A list of all possible K1 subkeys.
     """
     k1=[]
     for i in final_inputs:

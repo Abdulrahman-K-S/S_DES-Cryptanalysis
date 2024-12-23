@@ -3,7 +3,7 @@
 This file contains the second round functionality giving the K2
 """
 
-from utils import performPermutation, splitIntoHalves , Sboxes , possible_input , XOR ,  extract_output
+from utils import performPermutation, splitIntoHalves , sBoxes , possible_input , XOR ,  extract_output
 
 
 def secondRoundFromTop(R1):
@@ -17,7 +17,7 @@ def secondRoundFromTop(R1):
         R1 (str): The right half of the plaintext after the first round.
 
     Returns:
-        str: The expanded version of R1.
+        (str): The expanded version of R1.
     """
     expanded_R1 = performPermutation(R1, "expansion")
 
@@ -36,7 +36,7 @@ def secondRoundFromBottom(ciphertext,L1):
         L1 (str): The left half of the plaintext after the first round.
 
     Returns:
-        tuple: A tuple containing the possible inputs to the S-boxes
+        (tuple): A tuple containing the possible inputs to the S-boxes
                and the right half of the ciphertext (R2).
     """
     initial_perm=performPermutation(ciphertext, "initial")
@@ -44,14 +44,14 @@ def secondRoundFromBottom(ciphertext,L1):
     y=XOR(L1,L2,4)
     permutated_y=performPermutation(y, "p4-inverse")
     o1,o2=extract_output(permutated_y)
-    i1,i2=Sboxes(o1,o2)
+    i1,i2=sBoxes(o1,o2)
     final_inputs=possible_input(i1,i2)
     return final_inputs ,R2
-    
 
 
 def calculateAllPossibleK2s(final_inputs,expanded_R1):
-    """
+    """calculateAllPossibleK2s
+
     Calculate all possible K2 subkeys.
 
     This function takes the expanded right side from the plaintext and 
@@ -63,7 +63,7 @@ def calculateAllPossibleK2s(final_inputs,expanded_R1):
         expanded_R1 (str): The expanded right half of the plaintext.
 
     Returns:
-        list: A list of all possible K2 subkeys.
+        (list): A list of all possible K2 subkeys.
     """
     k2=[]
     for i in final_inputs:
