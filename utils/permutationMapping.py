@@ -25,8 +25,13 @@ expansion_permutation_map = [
     4, 1, 2, 3, 2, 3, 4, 1
 ]
 
-permutation_10_map = [3, 5, 2, 7, 4, 10, 1, 9, 8, 6]
-permutation_8_map = [6, 3, 7, 4, 8, 5, 10, 9]
+permutation_10_map = [
+    3, 5, 2, 7, 4, 10, 1, 9, 8, 6
+]
+
+permutation_8_map = [
+    6, 3, 7, 4, 8, 5, 10, 9
+]
 
 S0= [
         [1, 0, 3, 2],
