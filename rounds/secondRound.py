@@ -20,9 +20,9 @@ def secondRoundFromTop(R2):
     Returns:
         (str): The expanded version of R2.
     """
-    expanded_R2 = performPermutation(R2, "expansion")
+    expanded_R1 = performPermutation(R2, "expansion")
 
-    return expanded_R2
+    return expanded_R1
 
 
 def secondRoundFromBottom(ciphertext, R1):
@@ -42,13 +42,12 @@ def secondRoundFromBottom(ciphertext, R1):
     """
     initial_perm=performPermutation(ciphertext, "initial")
     L2, R2 = splitIntoHalves(initial_perm)
-    expanded_R1 = performPermutation(R2, "expansion")
     y=XOR(R1,L2,4)
     permutated_y=performPermutation(y, "p4-inverse")
     o1,o2=extract_output(permutated_y)
     i1,i2=sBoxes(o1,o2)
     final_inputs=possible_input(i1,i2)
-    return final_inputs, expanded_R1, R2
+    return final_inputs , R2
 
 
 def calculateAllPossibleK2s(final_inputs,expanded_R1):

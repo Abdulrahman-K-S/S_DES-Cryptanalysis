@@ -7,7 +7,8 @@ if __name__ == "__main__":
 
     L0, expanded_R0, R0 = firstRoundFromTop(plaintext)
 
-    round2_final_inputs, expanded_R1, R2 = secondRoundFromBottom(ciphertext, R0)
+    round2_final_inputs, R2 = secondRoundFromBottom(ciphertext, R0)
+    expanded_R1=secondRoundFromTop(R2)
 
     round1_final_inputs = firstRoundFromBottom(R2, L0)
 
