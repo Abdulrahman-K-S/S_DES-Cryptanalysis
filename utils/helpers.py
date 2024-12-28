@@ -21,6 +21,20 @@ def splitIntoHalves(data):
     mid = len(data) // 2
     return data[:mid], data[mid:]
 
+def concatenate(leftSide, rightSide):
+    """concatenate
+
+    This function takes 2 strings and concatenet them together
+
+    Arguments:
+        leftSide (str): The left side of the string.
+        rightSide (str): The right side of the string.
+    
+    Return:
+        (str): The concatenated string
+    """
+    return leftSide + rightSide
+
 def sBoxes(output1,output2):
     """sBoxes
     Identify possible inputs to S-boxes based on given outputs.
