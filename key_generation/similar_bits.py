@@ -1,4 +1,4 @@
-from utils import performPermutation, left_shift, splitIntoHalves
+from utils import performPermutation, left_shift, splitIntoHalves, concatenate
 
 MASTER_KEY = "0123456789"
 
@@ -17,22 +17,17 @@ def generate_subkeys(master_key):
     """
     permuted_key = performPermutation(master_key, "p10")
 
-    # Split the key into two halves
     left, right = splitIntoHalves(permuted_key)
 
-    # Left Shift by 1 (LS-1)
     left = left_shift(left, 1)
     right = left_shift(right, 1)
 
-    # Permutation P8 for K1
-    K1 = performPermutation(left + right, 'p8')
+    K1 = performPermutation(concatenate(left, right), 'p8')
 
-    # Left Shift by 2 (LS-2)
     left = left_shift(left, 2)
     right = left_shift(right, 2)
 
-    # Permutation P8 for K2
-    K2 = performPermutation(left + right, 'p8')
+    K2 = performPermutation(concatenate(left, right), 'p8')
 
     return K1, K2
 
