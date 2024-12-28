@@ -2,8 +2,8 @@ from rounds import firstRoundFromTop, firstRoundFromBottom, calculateAllPossible
 from key_generation import findPossiblePairs
 
 if __name__ == "__main__":
-    plaintext=input("Enter plaintext:") # 00010110
-    ciphertext=input("Enter ciphertext:") # 10110111
+    plaintext=input("Enter plaintext: ") # 00010110
+    ciphertext=input("Enter ciphertext: ") # 10110111
 
     L0, expanded_R0, R0 = firstRoundFromTop(plaintext)
 
