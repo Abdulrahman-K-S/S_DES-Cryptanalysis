@@ -1,10 +1,21 @@
 from utils import performPermutation, left_shift, splitIntoHalves
 
-MASTER_KEY=[0,1,2,3,4,5,6,7,8,9]
+MASTER_KEY = "0123456789"
 
 
-def generate_keys(input_key):
-    permuted_key = performPermutation(input_key, "p10")
+def generate_subkeys(master_key):
+    """generate_subkeys
+    
+    This function takes in a Master Key and generates the
+    2 sub-keys needed for performing the S-DES encryption/decryption
+
+    Arguments:
+        master_key (str): The master key
+
+    Return:
+        (str, str): Both subkeys K1 & K2
+    """
+    permuted_key = performPermutation(master_key, "p10")
 
     # Split the key into two halves
     left, right = splitIntoHalves(permuted_key)
